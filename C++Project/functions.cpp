@@ -189,3 +189,87 @@ void print_peripheral(player* plyr, map<vector<int>,string> gameboard) {
 		}
 	}
 }
+
+
+void attack() {
+    cout << "The monster strikes at you!" << endl;
+    hp->life--;
+    if (sabernumber>0){
+        cout << "You strike the lock with your sword!" << endl;
+        cout << "The demon lies on the ground, lifeless. You killed it." << endl;
+        demon->false;
+    }else{
+        cout << "You punched the demon." << endl;
+        switch (monsterhp){
+            case 3:
+                monsterhp->2;
+                cou << "The demon looks painful. Looks like a couple more punches are needed." << endl;
+                break;
+            case 2:
+                monsterhp->1;
+                cou << "The demon hardly stands. Looks like one final hit will do the job!" << endl;
+                break;
+            case 1:
+                monsterhp->0;
+                cou << "The demon lies on the ground lifeless. You did it." << endl;
+                demon->false;
+                break;
+        }
+    }
+}
+
+
+void chest_interaction() {
+    if (chestnum>1){
+        if (sabernumber>0){
+            switch (saberstatus)
+            {
+                cout << "You strike the lock with your sword!" << endl;
+                case "Perfect":
+                    cout << "A crack has appeared on your sword. It is likely to break into pieces after the next strike on chest." << endl;
+                    saberstatus->"Damaged";
+                    break;
+                case "Damaged":
+                    cout << "After the strike on the chest, your sword breaks into pieces." << endl;
+                    sword-=1;
+                    if (sword>=0){
+                        cout << "You wield another sword in your hand." << endl;
+                        saberstatus->"Perfect";
+                    break;
+                    }
+                cheststatus=0;
+            }
+        }else{
+            cout << "You smash the chest with your bare hand!" << endl; 
+            switch cheststatus{
+                case 2:
+                    cout << "A crack appears on the lock. Regardless of the pain on your hand, you should be able to break it next time." << endl;
+                    cheststatus->1;
+                    break;
+                case 1;
+                    cout << "The lock breaks!" << endl;
+                    cheststatus->0;
+                    break;
+            }
+        }
+        if (cheststatus==0){
+            switch (rand()%2+1){
+                case 0:
+                    cout << "Unlucky! The chest is empty!" << endl;
+                    break;
+                case 1:
+                    cout << "This chest contains a sword. The saber has been added into your inventory." << endl;
+                    swordnumber+=1;
+                    cout << swordnumber << " sword in total." << endl;
+                    break;
+                case 2:
+                    cout << "This chest contains a glass of potion. The potion has been added into your inventory." << endl;
+                    potionnumber+=1;
+                    break;
+        }
+    }else if (key==false){
+        cout << "This is the exit chest. Please eliminate the last monster in this dungeon to obtain the key before proceeding." << endl;
+    }else{
+        cout << "This is the end! Congratulations for surviving this dungeon!" << endl;
+    }
+}
