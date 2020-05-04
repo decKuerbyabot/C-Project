@@ -280,7 +280,7 @@ void chest_interaction() {
                     		if (swordnumber>0)
 			    		cout << "This chest contains a sword. The sword has been added into your inventory." << endl;
                     		else
-					cout << "You wield the sword." << endl;
+					cout << "You wielded the sword." << endl;
 		    		swordnumber++;
                     		break;
                 	case 2:
