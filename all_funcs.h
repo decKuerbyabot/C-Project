@@ -35,7 +35,6 @@ public:
 		position = p;
 	}
 	void initial_C(vector<int> p, int n) {
-		srand(time(NULL));
 		type = 'C';
 		name = 'C' + std::to_string(n);
 		life = 3;
@@ -147,4 +146,3 @@ public:
 void generatemap(map<vector<int>, block*>& gameboard, int Wid, int Hei, int Monster_number, int Chest_number);
 void move_player(map<vector<int>, block*>& gameboard, char& oper, vector<int>& playerpos);
 void CM_RandomMove(map<vector<int>, block*>& gameboard, vector<int> playerpos);
-bool is_valid(int Win, int Hei, int m, int n);
